@@ -1,18 +1,27 @@
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+StartAPI(builder);
 
-var app = builder.Build();
-
-if (app.Environment.IsDevelopment())
+void StartAPI(WebApplicationBuilder builder)
 {
+    ConfigureServices(builder);
+
+    var app = builder.Build();
+    app.MapControllers();
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerConfiguration();
+    app.UseCorsConfiguration();
+    app.UseHealthChecks("/health");
+    app.Run();
 }
 
-app.UseHttpsRedirection();
-app.UseAuthorization();
-app.MapControllers();
-app.Run();
+void ConfigureServices(WebApplicationBuilder builder)
+{
+    builder.Services.AddDefaultConfiguration();
+    builder.Services.AddControllers();
+    builder.Services.AddEndpointsApiExplorer();
+    builder.Services.AddCorsConfiguration();
+    builder.Services.AddSwaggerConfiguration();
+    builder.Services.AddHealthChecks();
+    builder.Services.AddDependencyInjectionConfiguration();
+}

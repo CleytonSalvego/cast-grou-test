@@ -17,6 +17,10 @@ void StartAPI(WebApplicationBuilder builder)
 
 void ConfigureServices(WebApplicationBuilder builder)
 {
+
+    builder.Services.AddDataBaseConfiguration(builder.Configuration);
+
+
     builder.Services.AddDefaultConfiguration();
     builder.Services.AddControllers();
     builder.Services.AddEndpointsApiExplorer();

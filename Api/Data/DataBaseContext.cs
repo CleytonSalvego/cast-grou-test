@@ -1,9 +1,17 @@
-namespace api.Data
+using Api.Data.Mapping;
+using Api.Interfaces;
+using Api.Model;
+using Microsoft.EntityFrameworkCore;
+
+namespace Api.Data
 {
     public class DataBaseContext : DbContext
     {
-        string connectionString = Configuration.Configuration.ConnectionString;
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-        => options.UseSqlServer(connectionString);
+        public DbSet<AccountModel> Accounts { get; set; }
+        public DataBaseContext(DbContextOptions<DataBaseContext> options) : base(options) { }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new AccountMap());
+        }
     }
 }

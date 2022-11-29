@@ -1,3 +1,5 @@
+using Api.Config;
+
 var builder = WebApplication.CreateBuilder(args);
 
 StartAPI(builder);
@@ -19,8 +21,6 @@ void ConfigureServices(WebApplicationBuilder builder)
 {
 
     builder.Services.AddDataBaseConfiguration(builder.Configuration);
-
-
     builder.Services.AddDefaultConfiguration();
     builder.Services.AddControllers();
     builder.Services.AddEndpointsApiExplorer();

@@ -76,3 +76,6 @@ _[Ss]cripts
 ./Database
 .Database
 Database
+./TestResults
+.TestResults
+TestResults

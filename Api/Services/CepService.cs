@@ -19,8 +19,15 @@ namespace Api.Services
 
         public Task<ResponseCepViewModel> Get(string cep)
         {
+            return _httpService.Get(cep, _configuration.GetSection("CepSettings").GetSection("uri").Value);
+        }
+
+        public string IsValid(string cep)
+        {
             var formatedCep = FormatCep(cep);
-            return _httpService.Get(formatedCep, _configuration.GetSection("CepSettings").GetSection("uri").Value);
+            if (formatedCep.Length != 8) return "";
+            
+            return formatedCep;
         }
 
         private string FormatCep(string cep)

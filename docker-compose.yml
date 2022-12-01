@@ -10,3 +10,16 @@ services:
       - "1433:1433"
     volumes:
       - .\Database:/var/opt/mssql/data
+
+  api:
+    build:
+      context: .
+      dockerfile: Api/Dockerfile
+    container_name: api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "6000:80"
+      - "6001:443"
+    depends_on:
+      - sqlserver

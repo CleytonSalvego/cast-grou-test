@@ -10,6 +10,8 @@ services:
       - "1433:1433"
     volumes:
       - .\Database:/var/opt/mssql/data
+    networks:
+      - proxy
 
   api:
     build:
@@ -23,3 +25,25 @@ services:
       - "6001:443"
     depends_on:
       - sqlserver
+    networks:
+      - proxy
+
+  client:
+    build:
+      context: .
+      dockerfile: Client/Dockerfile
+    container_name: client
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "7000:80"
+      - "7001:443"
+    depends_on:
+      - sqlserver
+      - api
+    networks:
+      - proxy
+
+networks:
+  patterns-network:
+    driver: 'proxy'

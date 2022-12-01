@@ -1,7 +1,8 @@
 ﻿using Api.Interfaces;
 using Api.ViewModel;
-using RestSharp;
 using Newtonsoft.Json;
+using RestSharp;
+
 
 namespace Api.Services
 {
@@ -14,7 +15,7 @@ namespace Api.Services
             var request = new RestRequest(url);
             var response = await client.GetAsync(request);
             var result = JsonConvert.DeserializeObject<ResponseCepViewModel>(response.Content);
-
+           
 
             return result;
 

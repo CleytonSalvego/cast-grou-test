@@ -50,7 +50,6 @@ namespace Tests.APITests.CepService
         [TestMethod]
         [TestCategory("CepController")]
         [DataRow("")]
-        [DataRow(null)]
         public async Task Should_Get_Error_Cep_Empty(string cep)
         {
             var fieldCep = new CepViewModel { Cep = cep };

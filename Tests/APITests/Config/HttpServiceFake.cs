@@ -7,9 +7,9 @@ namespace Tests.APITests.Config
     {
         public async Task<ResponseCepViewModel> Get(string cep, string uri)
         {
-            if (cep != "01001000") return new ResponseCepViewModel();
+            if (cep != "01001000") return  new ResponseCepViewModel();
 
-            var response = new ResponseCepViewModel
+             var response = new ResponseCepViewModel
             {
                 Cep = "01001-000",
                 Logradouro = "Praça da Sé",

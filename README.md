@@ -11,6 +11,7 @@ Dispodição dos projeto.
 - Cada projeto possui um Dockerfile.
 - Na raiz do projeto existe um arquivo docker-cmpose.yml
 - Ao rodar o comando docker-compose up -d deveria ser criado o banco de dados SQL, e as imagens da API e Client (Porém está com problema)
+_**Atualização> Realizando o docker build individualmente as imagens são criadas normalmente (TODO: Verificar docker-compose.yml)
 
 
 

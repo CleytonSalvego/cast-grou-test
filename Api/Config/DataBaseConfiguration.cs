@@ -5,11 +5,12 @@ namespace Api.Config
 {
     public static class DataBaseConfiguration
     {
-
         public static void AddDataBaseConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
+
             services.AddDbContext<DataBaseContext>(options =>
-             options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+
         }
 
     }
